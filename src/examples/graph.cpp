@@ -244,14 +244,15 @@ void load_dynamic_graph() {
 
     for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
         auto pos = stringSet.find(it.key());
-
         // print element position if it is present in set
-        if (pos != stringSet.end())
+        if (pos != stringSet.end()) {
             std::cout << "Element found at position : "
                       << distance(stringSet.begin(), pos) << endl;
-        else
+        }
+            else {
             stringSet.insert(it.key());
-        std::cout << it.key() ;
+        }
+        std::cout << it.key();
 
 
         std:: cout << num_edges_retrieve++;
