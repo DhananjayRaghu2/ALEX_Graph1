@@ -169,7 +169,10 @@ void load_base_graph() {
   std::cout << "base graph loaded to memory" << std::endl;
 
   start = mywtime();
+  std::cout << "Node count" << alex_graph.nodeCounter;
   alex_graph.bulk_load(base_values, num_edges);
+  std::cout << "Node count" << alex_graph.nodeCounter;
+
   end = mywtime();
   std::cout << "base graph bulk loaded into ALEX" << std::endl;
   cout << "B-graph load time = " << (end - start) << endl;
@@ -180,18 +183,7 @@ void load_base_graph() {
     unordered_set<::int64_t> stringSet;
   int64_t num_edges_retrieve = 0;
   for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
-      auto pos = stringSet.find(it.key());
-      // print element position if it is present in set
-      if (pos != stringSet.end()) {
-          std::cout << "Element found at position : "
-                    << distance(stringSet.begin(), pos) << endl;
-      }
-      else {
-          stringSet.insert(it.key());
-      }
-
       num_edges_retrieve++;
-
   }
   if (num_edges_retrieve != num_edges) {
     std::cout << "Error! There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve

@@ -52,6 +52,7 @@ template <class T, class P, class Compare = AlexCompare,
           class Alloc = std::allocator<std::pair<T, P>>,
           bool allow_duplicates = true>
 class Alex {
+
   static_assert(std::is_arithmetic<T>::value, "ALEX key type must be numeric.");
   static_assert(std::is_same<Compare, AlexCompare>::value,
                 "Must use AlexCompare.");
@@ -96,6 +97,7 @@ class Alex {
     bool approximate_cost_computation = false;
   };
   Params params_;
+
 
   /* Setting max node size automatically changes these parameters */
   struct DerivedParams {
@@ -192,7 +194,8 @@ class Alex {
   };
 
   // At least this many keys must be outside the domain before a domain
-  // expansion is triggered.
+  // expansion is triggered
+  // .
   static const int kMinOutOfDomainKeys = 5;
   // After this many keys are outside the domain, a domain expansion must be
   // triggered.
@@ -202,7 +205,7 @@ class Alex {
   // expected number of OOD due to randomness by greater than the tolereance
   // factor.
   static const int kOutOfDomainToleranceFactor = 2;
-
+  public: int nodeCounter;
   Compare key_less_ = Compare();
   Alloc allocator_ = Alloc();
 
@@ -216,6 +219,7 @@ class Alex {
     empty_data_node->bulk_load(nullptr, 0);
     root_node_ = empty_data_node;
     stats_.num_data_nodes++;
+    nodeCounter = 0;
     create_superroot();
   }
 
@@ -227,6 +231,7 @@ class Alex {
     empty_data_node->bulk_load(nullptr, 0);
     root_node_ = empty_data_node;
     stats_.num_data_nodes++;
+    nodeCounter = 0;
     create_superroot();
   }
 
@@ -237,10 +242,12 @@ class Alex {
     empty_data_node->bulk_load(nullptr, 0);
     root_node_ = empty_data_node;
     stats_.num_data_nodes++;
+    nodeCounter = 0;
     create_superroot();
   }
 
   ~Alex() {
+      nodeCounter = 0;
     for (NodeIterator node_it = NodeIterator(this); !node_it.is_end();
          node_it.next()) {
       delete_node(node_it.current());
@@ -738,6 +745,7 @@ class Alex {
       auto data_node = new (data_node_allocator().allocate(1))
           data_node_type(node->level_, derived_params_.max_data_node_slots,
                          key_less_, allocator_);
+      nodeCounter++;
       data_node->bulk_load(values, num_keys, data_node_model,
                            params_.approximate_model_computation);
       data_node->cost_ = node->cost_;
@@ -776,6 +784,7 @@ class Alex {
       stats_.num_model_nodes++;
       auto model_node = new (model_node_allocator().allocate(1))
           model_node_type(node->level_, allocator_);
+        nodeCounter++;
       if (best_fanout_tree_depth == 0) {
         // slightly hacky: we assume this means that the node is relatively
         // uniform but we need to split in
@@ -847,6 +856,7 @@ class Alex {
       auto data_node = new (data_node_allocator().allocate(1))
           data_node_type(node->level_, derived_params_.max_data_node_slots,
                          key_less_, allocator_);
+        nodeCounter++;
       data_node->bulk_load(values, num_keys, data_node_model,
                            params_.approximate_model_computation);
       data_node->cost_ = node->cost_;
