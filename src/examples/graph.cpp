@@ -203,6 +203,8 @@ void load_dynamic_graph() {
   while (dynamic_file >> u >> v >> w) {
     dynamic_values[t].first = PUT_KEY(u, v);
     dynamic_values[t].second = w;
+    std::cout << "Dynamic_values 1 " << dynamic_values[t].first << "Dynamic_values 2 " << dynamic_values[t].second << std::endl;
+
 //    dynamic_values[t].second = make_pair(num_edges+t, w);
     t += 1;
     out_degree[u] += 1;
