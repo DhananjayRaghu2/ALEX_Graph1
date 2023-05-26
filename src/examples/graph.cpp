@@ -2,7 +2,7 @@
 // Licensed under the MIT license.
 
 /*
- * This short sample program demonstrates ALEX's API.
+ * This short sample program demonstrates ALEX's API
  */
 
 #include "../core/alex.h"
