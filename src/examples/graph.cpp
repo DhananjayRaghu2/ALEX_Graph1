@@ -239,7 +239,9 @@ void load_dynamic_graph() {
 #ifdef SANITY_TEST
  // std::cout << "num_dynamic_edges: " << num_dynamic_edges << std::endl;
   //std::cout << "dynamic values: " << sizeof(dynamic_values)/sizeof(dynamic_values[0]);
-  int64_t num_edges_retrieve = 0;
+    std::cout << "ynamic_vlues" << sizeof(dynamic_values)<< std::endl;
+
+    int64_t num_edges_retrieve = 0;
     unordered_set<::int64_t> stringSet;
 
     for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
