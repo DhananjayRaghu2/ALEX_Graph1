@@ -216,7 +216,7 @@ void load_dynamic_graph() {
   // Insert dynamic edges.
   start = mywtime();
   for (int64_t i = 0; i < num_dynamic_edges; i++) {
-     std::cout << "i: " << i << " " << dynamic_values[i].first << " " << dynamic_values[i].second << std::endl;
+    // std::cout << "i: " << i << " " << dynamic_values[i].first << " " << dynamic_values[i].second << std::endl;
 //    if(i && i%1000000 == 0) std::cout << "dynamic edge inserted: " << i << std::endl;
     alex_graph.insert(dynamic_values[i].first, dynamic_values[i].second);
     num_edges += 1;
@@ -231,14 +231,14 @@ void load_dynamic_graph() {
   free(dynamic_values);
 
 #ifdef SANITY_TEST
-std::cout << "num_dynamic_edges: " << num_dynamic_edges << std::endl;
+  std::cout << "num_dynamic_edges: " << num_dynamic_edges << std::endl;
   std::cout << "dynamic values: " << sizeof(dynamic_values)/sizeof(dynamic_values[0]);
   int64_t num_edges_retrieve = 0;
   for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
     num_edges_retrieve++;
   }
   if (num_edges_retrieve != num_edges) {
-    std::cout << "Error! There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
+    std::cout << "ErrorASD There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
               << " edges." << std::endl;
   }
 #endif
