@@ -177,9 +177,22 @@ void load_base_graph() {
   free(base_values);
 
 #ifdef SANITY_TEST
+    unordered_set<::int64_t> stringSet;
   int64_t num_edges_retrieve = 0;
   for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
-    num_edges_retrieve++;
+      auto pos = stringSet.find(it.key());
+      // print element position if it is present in set
+      if (pos != stringSet.end()) {
+          std::cout << "Element found at position : "
+                    << distance(stringSet.begin(), pos) << endl;
+      }
+      else {
+          stringSet.insert(it.key());
+      }
+      std::cout << it.key();
+
+      num_edges_retrieve++;
+
   }
   if (num_edges_retrieve != num_edges) {
     std::cout << "Error! There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
@@ -242,24 +255,15 @@ void load_dynamic_graph() {
     std::cout << "ynamic_vlues" << sizeof(dynamic_values)<< std::endl;
 
     int64_t num_edges_retrieve = 0;
-    unordered_set<::int64_t> stringSet;
+
 
     for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
-        auto pos = stringSet.find(it.key());
-        // print element position if it is present in set
-        if (pos != stringSet.end()) {
-            std::cout << "Element found at position : "
-                      << distance(stringSet.begin(), pos) << endl;
-        }
-            else {
-            stringSet.insert(it.key());
-        }
-        std::cout << it.key();
 
 
         std:: cout << num_edges_retrieve++;
   }
   if (num_edges_retrieve != num_edges) {
+      
     std::cout << "Error There should be " << num_edges << " edges in thEEe graph, retrieved " << num_edges_retrieve
               << " edges." << std::endl;
   }
