@@ -199,8 +199,7 @@ void load_dynamic_graph() {
   int64_t t = 0;
   std::pair<KEY_TYPE, PAYLOAD_TYPE>* dynamic_values;
   dynamic_values = (std::pair<KEY_TYPE, PAYLOAD_TYPE>*) malloc(num_dynamic_edges * sizeof(std::pair<KEY_TYPE, PAYLOAD_TYPE>));
-  std::cout << "num_dynamic_edges: " << num_dynamic_edges << std::endl;
-  std::cout << "dynamic values: " << sizeof(dynamic_values)/sizeof(arr[0]); //length calculation<< std::endl;
+
   while (dynamic_file >> u >> v >> w) {
     dynamic_values[t].first = PUT_KEY(u, v);
     dynamic_values[t].second = w;
@@ -232,6 +231,8 @@ void load_dynamic_graph() {
   free(dynamic_values);
 
 #ifdef SANITY_TEST
+std::cout << "num_dynamic_edges: " << num_dynamic_edges << std::endl;
+  std::cout << "dynamic values: " << sizeof(dynamic_values)/sizeof(arr[0]); //length calculation<< std::endl;
   int64_t num_edges_retrieve = 0;
   for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
     num_edges_retrieve++;
