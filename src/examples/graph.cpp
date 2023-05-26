@@ -203,7 +203,6 @@ void load_dynamic_graph() {
   while (dynamic_file >> u >> v >> w) {
     dynamic_values[t].first = PUT_KEY(u, v);
     dynamic_values[t].second = w;
-    std::cout << "Dynamic_values 1 " << dynamic_values[t].first << "Dynamic_values 2 " << dynamic_values[t].second << std::endl;
 
 //    dynamic_values[t].second = make_pair(num_edges+t, w);
     t += 1;
@@ -212,7 +211,9 @@ void load_dynamic_graph() {
     sanity_graph[u].push_back(v);
 #endif
   }
-  dynamic_file.close();
+    std::cout << "Dynamic_values" << sizeof(dynamic_values)/sizeof(dynamic_values[0])<< std::endl;
+
+    dynamic_file.close();
   std::cout << "dynamic graph loaded into memory" << std::endl;
 
   // Insert dynamic edges.
