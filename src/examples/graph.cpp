@@ -247,14 +247,14 @@ void load_dynamic_graph() {
 
         // print element position if it is present in set
         if (pos != stringSet.end())
-            cout << "Element found at position : "
-                 << distance(stringSet.begin(), pos) << endl;
+            std::cout << "Element found at position : "
+                      << distance(stringSet.begin(), pos) << endl;
         else
             stringSet.insert(it.key());
         std::cout << it.key() ;
 
 
-        num_edges_retrieve++;
+        std:: cout << num_edges_retrieve++;
   }
   if (num_edges_retrieve != num_edges) {
     std::cout << "Error There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
