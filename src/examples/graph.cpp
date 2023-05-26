@@ -214,7 +214,7 @@ void load_dynamic_graph() {
     sanity_graph[u].push_back(v);
 #endif
   }
-    std::cout << "Dynamic_values" << sizeof(dynamic_values)<< std::endl;
+    std::cout << "Dynamic_vlues" << sizeof(dynamic_values)<< std::endl;
 
     dynamic_file.close();
   std::cout << "dynamic graph loaded into memory" << std::endl;
