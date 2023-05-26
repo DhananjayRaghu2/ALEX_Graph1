@@ -34,7 +34,7 @@ int THD_COUNT = 0;
 VERTEX_TYPE global_vcount = 0;
 TIMESTAMP_TYPE global_time = 0;
 int64_t num_edges = 0;
-int64_t num_edges = 0;
+//int64_t num_edges = 0;
 int source = 0;//text
 int job; // 0 means PageRank, 1 means SSSP
 string BASE_FILENAME, DYNAMIC_FILENAME;
@@ -232,7 +232,7 @@ void load_dynamic_graph() {
 
 #ifdef SANITY_TEST
 std::cout << "num_dynamic_edges: " << num_dynamic_edges << std::endl;
-  std::cout << "dynamic values: " << sizeof(dynamic_values)/sizeof(arr[0]); //length calculation<< std::endl;
+  std::cout << "dynamic values: " << sizeof(dynamic_values)/sizeof(dynamic_values[0]);
   int64_t num_edges_retrieve = 0;
   for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
     num_edges_retrieve++;
