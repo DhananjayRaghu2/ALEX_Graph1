@@ -34,6 +34,7 @@ int THD_COUNT = 0;
 VERTEX_TYPE global_vcount = 0;
 TIMESTAMP_TYPE global_time = 0;
 int64_t num_edges = 0;
+int64_t num_edges = 0;
 int source = 0;//text
 int job; // 0 means PageRank, 1 means SSSP
 string BASE_FILENAME, DYNAMIC_FILENAME;
@@ -198,6 +199,8 @@ void load_dynamic_graph() {
   int64_t t = 0;
   std::pair<KEY_TYPE, PAYLOAD_TYPE>* dynamic_values;
   dynamic_values = (std::pair<KEY_TYPE, PAYLOAD_TYPE>*) malloc(num_dynamic_edges * sizeof(std::pair<KEY_TYPE, PAYLOAD_TYPE>));
+  std::cout << "num_dynamic_edges: " << num_dynamic_edges << std::endl;
+  std::cout << "dynamic values: " << sizeof(dynamic_values)/sizeof(arr[0]); //length calculation<< std::endl;
   while (dynamic_file >> u >> v >> w) {
     dynamic_values[t].first = PUT_KEY(u, v);
     dynamic_values[t].second = w;
