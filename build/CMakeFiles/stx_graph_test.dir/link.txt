@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -march=native -Wall -Wextra -fopenmp -O3 -DNDEBUG "CMakeFiles/stx_graph_test.dir/src/stx-btree/stx_graph_test.cpp.o" -o stx_graph_test 

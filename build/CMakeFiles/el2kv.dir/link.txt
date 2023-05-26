@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -march=native -Wall -Wextra -fopenmp -O3 -DNDEBUG CMakeFiles/el2kv.dir/src/utils/el2kv_converter.cpp.o -o el2kv 
