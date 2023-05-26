@@ -251,9 +251,11 @@ void load_dynamic_graph() {
                  << distance(stringSet.begin(), pos) << endl;
         else
             stringSet.insert(it.key());
+        std::cout << it.key() ;
+
 
         num_edges_retrieve++;
-  } 
+  }
   if (num_edges_retrieve != num_edges) {
     std::cout << "Error There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
               << " edges." << std::endl;
