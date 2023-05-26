@@ -211,7 +211,7 @@ void load_dynamic_graph() {
 #endif
   }
   dynamic_file.close();
-  std::cout << "dynamic graph loaded into memory" << std::endl;
+  std::cout << "dynamic  TEST graph loaded into memory" << std::endl;
 
   // Insert dynamic edges.
   start = mywtime();
@@ -231,14 +231,14 @@ void load_dynamic_graph() {
   free(dynamic_values);
 
 #ifdef SANITY_TEST
-  std::cout << "num_dynamic_edges: " << num_dynamic_edges << std::endl;
-  std::cout << "dynamic values: " << sizeof(dynamic_values)/sizeof(dynamic_values[0]);
+ // std::cout << "num_dynamic_edges: " << num_dynamic_edges << std::endl;
+  //std::cout << "dynamic values: " << sizeof(dynamic_values)/sizeof(dynamic_values[0]);
   int64_t num_edges_retrieve = 0;
   for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
     num_edges_retrieve++;
   }
   if (num_edges_retrieve != num_edges) {
-    std::cout << "ErrorASD There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
+    std::cout << "Error There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
               << " edges." << std::endl;
   }
 #endif
