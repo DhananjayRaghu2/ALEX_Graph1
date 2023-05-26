@@ -182,6 +182,7 @@ void load_base_graph() {
     std::cout << "Error! There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
               << " edges." << std::endl;
   }
+    std::cout << "Edges from t = " << t << std::endl;
 #endif
 }
 
@@ -244,6 +245,7 @@ void load_dynamic_graph() {
     std::cout << "Error There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
               << " edges." << std::endl;
   }
+    std::cout << "Edges from t = " << t << std::endl;
 #endif
 }
 
