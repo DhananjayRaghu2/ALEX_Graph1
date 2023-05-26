@@ -189,7 +189,6 @@ void load_base_graph() {
       else {
           stringSet.insert(it.key());
       }
-      std::cout << it.key();
 
       num_edges_retrieve++;
 
