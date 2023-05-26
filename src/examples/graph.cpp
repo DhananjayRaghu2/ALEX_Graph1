@@ -258,7 +258,7 @@ void load_dynamic_graph() {
         std:: cout << num_edges_retrieve++;
   }
   if (num_edges_retrieve != num_edges) {
-    std::cout << "Error There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
+    std::cout << "Error There should be " << num_edges << " edges in thEEe graph, retrieved " << num_edges_retrieve
               << " edges." << std::endl;
   }
 #endif
