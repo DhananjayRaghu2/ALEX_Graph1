@@ -9,7 +9,10 @@
 #include "gapbs/wtime.h"
 #include "gapbs/pvector.h"
 #include "gapbs/platform_atomics.h"
+#include <bits/stdc++.h>
 
+#include <iostream>
+#include <map>
 #include <getopt.h>
 using namespace std;
 
@@ -237,9 +240,20 @@ void load_dynamic_graph() {
  // std::cout << "num_dynamic_edges: " << num_dynamic_edges << std::endl;
   //std::cout << "dynamic values: " << sizeof(dynamic_values)/sizeof(dynamic_values[0]);
   int64_t num_edges_retrieve = 0;
-  for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
-    num_edges_retrieve++;
-  }
+    unordered_set<::int64_t> stringSet;
+
+    for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
+        auto pos = stringSet.find(it.key());
+
+        // print element position if it is present in set
+        if (pos != stringSet.end())
+            cout << "Element found at position : "
+                 << distance(stringSet.begin(), pos) << endl;
+        else
+            stringSet.insert(it.key());
+
+        num_edges_retrieve++;
+  } 
   if (num_edges_retrieve != num_edges) {
     std::cout << "Error There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
               << " edges." << std::endl;
