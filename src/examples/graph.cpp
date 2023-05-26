@@ -216,7 +216,7 @@ void load_dynamic_graph() {
   // Insert dynamic edges.
   start = mywtime();
   for (int64_t i = 0; i < num_dynamic_edges; i++) {
-//    std::cout << "i: " << i << " " << dynamic_values[i].first << " " << dynamic_values[i].second << std::endl;
+     std::cout << "i: " << i << " " << dynamic_values[i].first << " " << dynamic_values[i].second << std::endl;
 //    if(i && i%1000000 == 0) std::cout << "dynamic edge inserted: " << i << std::endl;
     alex_graph.insert(dynamic_values[i].first, dynamic_values[i].second);
     num_edges += 1;
