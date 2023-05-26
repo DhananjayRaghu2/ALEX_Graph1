@@ -199,7 +199,7 @@ void load_dynamic_graph() {
   int64_t t = 0;
   std::pair<KEY_TYPE, PAYLOAD_TYPE>* dynamic_values;
   dynamic_values = (std::pair<KEY_TYPE, PAYLOAD_TYPE>*) malloc(num_dynamic_edges * sizeof(std::pair<KEY_TYPE, PAYLOAD_TYPE>));
-  std::cout << "Dynamic_values" << sizeof(dynamic_values)/sizeof(dynamic_values[0])<< std::endl;
+  //std::cout << "Dynamic_values" << sizeof(dynamic_values)/sizeof(dynamic_values[0])<< std::endl;
   while (dynamic_file >> u >> v >> w) {
     dynamic_values[t].first = PUT_KEY(u, v);
     dynamic_values[t].second = w;
