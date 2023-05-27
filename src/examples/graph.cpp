@@ -205,13 +205,13 @@ void load_base_graph() {
     }
   }
 
-    for (const auto& pair : dup_counts) {
-        const std::pair<KEY_TYPE, PAYLOAD_TYPE>& edge_value = pair.first;
-        int count = pair.second;
-        if (count > 1) {
-            std::cout << "Duplicate edge value: U = " << edge_value.first << ", V = " << edge_value.second << ", Count = " << count << std::endl;
-        }
-    }
+//    for (const auto& pair : dup_counts) {
+//        const std::pair<KEY_TYPE, PAYLOAD_TYPE>& edge_value = pair.first;
+//        int count = pair.second;
+//        if (count > 1) {
+//            std::cout << "Duplicate edge value: U = " << edge_value.first << ", V = " << edge_value.second << ", Count = " << count << std::endl;
+//        }
+//    }
 
   if (num_edges_retrieve != num_edges) {
     std::cout << "Error! There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
