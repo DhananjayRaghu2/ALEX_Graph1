@@ -11,6 +11,7 @@
 #include "gapbs/platform_atomics.h"
 
 #include <getopt.h>
+#include <unordered_map>
 using namespace std;
 
 #define SANITY_TEST 0
@@ -149,9 +150,11 @@ void load_base_graph() {
   }
 
   std::pair<KEY_TYPE, PAYLOAD_TYPE>* base_values;
-//  base_values = (std::pair<KEY_TYPE, PAYLOAD_TYPE>*) malloc(num_base_edges * sizeof(std::pair<KEY_TYPE, PAYLOAD_TYPE>));
-  base_values = new std::pair<KEY_TYPE, PAYLOAD_TYPE>[num_base_edges];
+  base_values = (std::pair<KEY_TYPE, PAYLOAD_TYPE>*) malloc(num_base_edges * sizeof(std::pair<KEY_TYPE, PAYLOAD_TYPE>));
   int64_t t = 0;
+
+//  std::unordered_map<std::pair<KEY_TYPE, PAYLOAD_TYPE>, int> dup_counts;
+
   while (base_file >> u >> v >> w) {
     base_values[t].first = PUT_KEY(u, v);
     base_values[t].second = w;
@@ -162,6 +165,10 @@ void load_base_graph() {
       if(num_edges == 2216448){
           std::cout << "num_edges at 2216448: U: " << u << ", V: " << v << ", W: " << w << std::endl;
       }
+
+      std::pair<KEY_TYPE, PAYLOAD_TYPE> edge_value = std::make_pair(u, v);
+//      dup_counts[edge_value]++;
+
     t += 1;
     num_edges += 1;
     out_degree[u] += 1;
@@ -173,6 +180,10 @@ void load_base_graph() {
   std::cout << "base graph loaded to memory" << std::endl;
     std::cout << "# of values in base_values: " << num_edges << std::endl;
 
+    std::cout << "sorting base_values" << num_edges << std::endl;
+    std::sort(base_values, base_values + num_base_edges,
+              [](auto const& a, auto const& b) { return a.first < b.first; });
+    std::cout << "finished sorting base_values" << num_edges << std::endl;
   start = mywtime();
 //  alex_graph.bulk_load(base_values, num_edges);
     alex_graph.bulk_load(base_values, num_base_edges);
@@ -193,6 +204,14 @@ void load_base_graph() {
         std::cout << "num_edges_retrieve at 2216448: U: " << u << ", V: " << v << ", W: " << w << std::endl;
     }
   }
+
+    for (const auto& pair : dup_counts) {
+        const std::pair<KEY_TYPE, PAYLOAD_TYPE>& edge_value = pair.first;
+        int count = pair.second;
+        if (count > 1) {
+            std::cout << "Duplicate edge value: U = " << edge_value.first << ", V = " << edge_value.second << ", Count = " << count << std::endl;
+        }
+    }
 
   if (num_edges_retrieve != num_edges) {
     std::cout << "Error! There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
