@@ -157,10 +157,10 @@ void load_base_graph() {
   int64_t t = 0;
   vec_base_values.resize(num_base_edges);
   while (base_file >> u >> v >> w) {
-//    base_values[t].first = PUT_KEY(u, v);
-//    base_values[t].second = w;
-    vec_base_values[t].first = PUT_KEY(u, v);
-    vec_base_values[t].second = w;
+    base_values[t].first = PUT_KEY(u, v);
+    base_values[t].second = w;
+//    vec_base_values[t].first = PUT_KEY(u, v);
+//    vec_base_values[t].second = w;
 
 
 
