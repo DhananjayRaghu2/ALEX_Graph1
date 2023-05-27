@@ -149,7 +149,8 @@ void load_base_graph() {
   }
 
   std::pair<KEY_TYPE, PAYLOAD_TYPE>* base_values;
-  base_values = (std::pair<KEY_TYPE, PAYLOAD_TYPE>*) malloc(num_base_edges * sizeof(std::pair<KEY_TYPE, PAYLOAD_TYPE>));
+//  base_values = (std::pair<KEY_TYPE, PAYLOAD_TYPE>*) malloc(num_base_edges * sizeof(std::pair<KEY_TYPE, PAYLOAD_TYPE>));
+  base_values = new std::pair<KEY_TYPE, PAYLOAD_TYPE>[num_base_edges];
   int64_t t = 0;
   while (base_file >> u >> v >> w) {
     base_values[t].first = PUT_KEY(u, v);
@@ -234,7 +235,7 @@ void load_dynamic_graph() {
   start = mywtime();
   for (int64_t i = 0; i < num_dynamic_edges; i++) {
     // std::cout << "i: " << i << " " << dynamic_values[i].first << " " << dynamic_values[i].second << std::endl;
-//    if(i && i%1000000 == 0) std::cout << "dynamic edge inserted: " << i << std::endl;
+    // if(i && i%1000000 == 0) std::cout << "dynamic edge inserted: " << i << std::endl;
     alex_graph.insert(dynamic_values[i].first, dynamic_values[i].second);
     num_edges += 1;
   }
