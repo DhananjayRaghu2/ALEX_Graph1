@@ -180,8 +180,10 @@ void load_base_graph() {
   std::cout << "Count of Base Values" << vec_base_values.size() << endl;
   base_file.close();
   std::cout << "base graph loaded to memory" << std::endl;
-
+    std::sort(base_values, base_values + num_edges,
+              [](auto const& a, auto const& b) { return a.first < b.first; });
   start = mywtime();
+
   std::cout << "Node count" << alex_graph.nodeCounter;
   alex_graph.bulk_load(base_values, num_edges);
   std::cout << "Node count" << alex_graph.nodeCounter;
