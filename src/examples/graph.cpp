@@ -175,8 +175,6 @@ void load_base_graph() {
   std::cout << "vec length" << vec_base_values.size() << endl;
   int edges = 0;
 
-  unordered_set<::int64_t> stringSet;
-
     for(int i = 0; i < vec_base_values.size(); i++){
       auto pos = stringSet.find(vec_base_values[i].first);
 
