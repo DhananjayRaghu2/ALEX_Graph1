@@ -169,7 +169,10 @@ void load_base_graph() {
   for(int i = 0; i < sizeof(out_degree)/sizeof(out_degree[0]); i++){
       edges += out_degree[i];
   }
-  std::cout << "num of edges" << edges;
+  for(int i = 0; i < sizeof(base_values)/sizeof(base_values[0]); i++){
+
+    }
+  std::cout << "num of edges" << sizeof(base_values)/sizeof(base_values[0]) << endl;
   base_file.close();
   std::cout << "base graph loaded to memory" << std::endl;
 
