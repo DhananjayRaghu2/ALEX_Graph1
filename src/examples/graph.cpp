@@ -185,7 +185,7 @@ void load_base_graph() {
 #ifdef SANITY_TEST
   int64_t num_edges_retrieve = 0;
 //  for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
-    for(int i = 0; i < alex_graph.num_leaves(); i++){
+    for(int i = 0; i < alex_graph.num_nodes(); i++){
     num_edges_retrieve++;
     if(num_edges_retrieve == 2216447){
         std::cout << "num_edges_retrieve at 2216447: U: " << u << ", V: " << v << ", W: " << w << std::endl;
