@@ -171,9 +171,11 @@ void load_base_graph() {
   }
   base_file.close();
   std::cout << "base graph loaded to memory" << std::endl;
+    std::cout << "# of values in base_values: " << num_edges << std::endl;
 
   start = mywtime();
-  alex_graph.bulk_load(base_values, num_edges);
+//  alex_graph.bulk_load(base_values, num_edges);
+    alex_graph.bulk_load(base_values, num_base_edges);
   end = mywtime();
   std::cout << "base graph bulk loaded into ALEX" << std::endl;
   cout << "B-graph load time = " << (end - start) << endl;
