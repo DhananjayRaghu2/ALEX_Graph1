@@ -176,19 +176,6 @@ void load_base_graph() {
   int edges = 0;
     unordered_set<::int64_t> stringSet;
 
-    for(int i = 0; i < vec_base_values.size(); i++){
-      auto pos = stringSet.find(vec_base_values[i].first);
-
-      // print element position if it is present in set
-      if (pos != stringSet.end())
-          cout << "Element found at position : "
-               << distance(stringSet.begin(), pos) << endl;
-      else
-          stringSet.insert(vec_base_values[i].first);
-        stringSet.insert(vec_base_values[i].first);
-
-
-    }
 
   std::cout << "Count of Base Values" << vec_base_values.size() << endl;
   base_file.close();
