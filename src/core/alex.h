@@ -661,6 +661,7 @@ class Alex {
     // Build temporary root model, which outputs a CDF in the range [0, 1]
     root_node_ =
         new (model_node_allocator().allocate(1)) model_node_type(0, allocator_);
+    nodeCounter++;
     T min_key = values[0].first;
     T max_key = values[num_keys - 1].first;
     root_node_->model_.a_ = 1.0 / (max_key - min_key);
