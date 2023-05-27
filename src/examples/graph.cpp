@@ -185,8 +185,10 @@ void load_base_graph() {
                << distance(stringSet.begin(), pos) << endl;
       else
           stringSet.insert(vec_base_values[i].first);
+        stringSet.insert(vec_base_values[i].first);
 
-  }
+
+    }
 
   std::cout << "Count of Base Values" << vec_base_values.size() << endl;
   base_file.close();
