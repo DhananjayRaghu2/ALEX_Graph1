@@ -265,7 +265,7 @@ void load_dynamic_graph() {
     for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
 
 
-        std:: cout << num_edges_retrieve++;
+      num_edges_retrieve++;
   }
   if (num_edges_retrieve != num_edges) {
       
