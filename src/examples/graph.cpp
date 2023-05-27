@@ -155,6 +155,12 @@ void load_base_graph() {
     base_values[t].first = PUT_KEY(u, v);
     base_values[t].second = w;
 //    base_values[t].second = make_pair(num_edges, w);
+      if(num_edges == 2216447){
+          std::cout << "num_edges at 2216447: U: " << u << ", V: " << v << ", W: " << w << std::endl;
+      }
+      if(num_edges == 2216448){
+          std::cout << "num_edges at 2216448: U: " << u << ", V: " << v << ", W: " << w << std::endl;
+      }
     t += 1;
     num_edges += 1;
     out_degree[u] += 1;
@@ -177,7 +183,14 @@ void load_base_graph() {
   int64_t num_edges_retrieve = 0;
   for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
     num_edges_retrieve++;
+    if(num_edges_retrieve == 2216447){
+        std::cout << "num_edges_retrieve at 2216447: U: " << u << ", V: " << v << ", W: " << w << std::endl;
+    }
+    else if(num_edges_retrieve == 2216448){
+        std::cout << "num_edges_retrieve at 2216448: U: " << u << ", V: " << v << ", W: " << w << std::endl;
+    }
   }
+
   if (num_edges_retrieve != num_edges) {
     std::cout << "Error! There should be " << num_edges << " edges in the graph, retrieved " << num_edges_retrieve
               << " edges." << std::endl;
@@ -200,7 +213,7 @@ void load_dynamic_graph() {
   int64_t t = 0;
   std::pair<KEY_TYPE, PAYLOAD_TYPE>* dynamic_values;
   dynamic_values = (std::pair<KEY_TYPE, PAYLOAD_TYPE>*) malloc(num_dynamic_edges * sizeof(std::pair<KEY_TYPE, PAYLOAD_TYPE>));
-  std::cout << "Dynamic_values" << sizeof(dynamic_values)/sizeof(dynamic_values[0])<< std::endl;
+  std::cout << "# of elements in dynamic_values" << sizeof(dynamic_values)/sizeof(dynamic_values[0])<< std::endl;
   while (dynamic_file >> u >> v >> w) {
     dynamic_values[t].first = PUT_KEY(u, v);
     dynamic_values[t].second = w;
@@ -212,7 +225,7 @@ void load_dynamic_graph() {
     sanity_graph[u].push_back(v);
 #endif
   }
-    std::cout << "Dynamic_values" << sizeof(dynamic_values)<< std::endl;
+    std::cout << "Total size of dynamic_values" << sizeof(dynamic_values)<< std::endl;
 
     dynamic_file.close();
   std::cout << "dynamic graph loaded into memory" << std::endl;
