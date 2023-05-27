@@ -25,7 +25,7 @@ using namespace std;
 #define KEY_TYPE uint64_t
 #define WEIGHT_TYPE int32_t
 #define TIMESTAMP_TYPE int64_t
-#define PAYLOAD_TYPE WEIGHT_TYPE
+#define PAYLOAD_TYPE int32_t
 #define DEGREE_TYPE int32_t
 //#define PAYLOAD_TYPE pair<TIMESTAMP_TYPE, WEIGHT_TYPE>
 
@@ -153,10 +153,17 @@ void load_base_graph() {
 
   std::pair<KEY_TYPE, PAYLOAD_TYPE>* base_values;
   base_values = (std::pair<KEY_TYPE, PAYLOAD_TYPE>*) malloc(num_base_edges * sizeof(std::pair<KEY_TYPE, PAYLOAD_TYPE>));
+  std::vector<std::pair<KEY_TYPE,PAYLOAD_TYPE> > vec_base_values;
   int64_t t = 0;
+  vec_base_values.resize(num_base_edges);
   while (base_file >> u >> v >> w) {
-    base_values[t].first = PUT_KEY(u, v);
-    base_values[t].second = w;
+//    base_values[t].first = PUT_KEY(u, v);
+//    base_values[t].second = w;
+    vec_base_values[t].first = PUT_KEY(u, v);
+    vec_base_values[t].second = w;
+
+
+
 //    base_values[t].second = make_pair(num_edges, w);
     t += 1;
     num_edges += 1;
@@ -165,14 +172,13 @@ void load_base_graph() {
     sanity_graph[u].push_back(v);
 #endif
   }
+  std::cout << "vec length" << vec_base_values.size() << endl;
   int edges = 0;
   for(int i = 0; i < sizeof(out_degree)/sizeof(out_degree[0]); i++){
       edges += out_degree[i];
   }
-  for(int i = 0; i < sizeof(base_values)/sizeof(base_values[0]); i++){
 
-    }
-  std::cout << "num of edges" << sizeof(base_values)/sizeof(base_values[0]) << endl;
+  std::cout << "Count of Base Values" << vec_base_values.size() << endl;
   base_file.close();
   std::cout << "base graph loaded to memory" << std::endl;
 
