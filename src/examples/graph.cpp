@@ -174,6 +174,7 @@ void load_base_graph() {
   }
   std::cout << "vec length" << vec_base_values.size() << endl;
   int edges = 0;
+    unordered_set<::int64_t> stringSet;
 
     for(int i = 0; i < vec_base_values.size(); i++){
       auto pos = stringSet.find(vec_base_values[i].first);
@@ -203,7 +204,6 @@ void load_base_graph() {
   free(base_values);
 
 #ifdef SANITY_TEST
-    unordered_set<::int64_t> stringSet;
   int64_t num_edges_retrieve = 0;
   for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
       num_edges_retrieve++;
