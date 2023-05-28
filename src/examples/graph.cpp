@@ -173,10 +173,10 @@ void load_base_graph() {
   std::cout << "base graph loaded to memory" << std::endl;
     std::cout << "# of values in base_values: " << num_edges << std::endl;
 
-    std::cout << "sorting base_values" << num_edges << std::endl;
+    std::cout << "sorting base_values" << std::endl;
     std::sort(base_values, base_values + num_base_edges,
               [](auto const& a, auto const& b) { return a.first < b.first; });
-    std::cout << "finished sorting base_values" << num_edges << std::endl;
+    std::cout << "finished sorting base_values" << std::endl;
   start = mywtime();
 //  alex_graph.bulk_load(base_values, num_edges);
     alex_graph.bulk_load(base_values, num_base_edges);
@@ -238,6 +238,11 @@ void load_dynamic_graph() {
 
     dynamic_file.close();
   std::cout << "dynamic graph loaded into memory" << std::endl;
+
+    std::cout << "sorting dynamic_values" << std::endl;
+    std::sort(dynamic_values, dynamic_values + num_dynamic_edges,
+              [](auto const& a, auto const& b) { return a.first < b.first; });
+    std::cout << "finished sorting dynamic_values" << std::endl;
 
   // Insert dynamic edges.
   start = mywtime();
