@@ -159,14 +159,7 @@ void load_base_graph() {
     base_values[t].first = PUT_KEY(u, v);
     base_values[t].second = w;
 //    base_values[t].second = make_pair(num_edges, w);
-      if(num_edges == 2216447){
-          std::cout << "num_edges at 2216447: U: " << u << ", V: " << v << ", W: " << w << std::endl;
-      }
-      if(num_edges == 2216448){
-          std::cout << "num_edges at 2216448: U: " << u << ", V: " << v << ", W: " << w << std::endl;
-      }
-
-      std::pair<KEY_TYPE, PAYLOAD_TYPE> edge_value = std::make_pair(u, v);
+//      std::pair<KEY_TYPE, PAYLOAD_TYPE> edge_value = std::make_pair(u, v);
 //      dup_counts[edge_value]++;
 
     t += 1;
@@ -197,12 +190,6 @@ void load_base_graph() {
   int64_t num_edges_retrieve = 0;
   for (auto it = alex_graph.begin(); it != alex_graph.end(); it++) {
     num_edges_retrieve++;
-    if(num_edges_retrieve == 2216447){
-        std::cout << "num_edges_retrieve at 2216447: U: " << u << ", V: " << v << ", W: " << w << std::endl;
-    }
-    else if(num_edges_retrieve == 2216448){
-        std::cout << "num_edges_retrieve at 2216448: U: " << u << ", V: " << v << ", W: " << w << std::endl;
-    }
   }
 
 //    for (const auto& pair : dup_counts) {
