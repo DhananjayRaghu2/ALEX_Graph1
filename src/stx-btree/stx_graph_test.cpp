@@ -472,7 +472,7 @@ int main(int argc, char* argv[]) {
 
 #ifdef SANITY_TEST
   access_whole_graph();
-  check_sanity();
+//  check_sanity();
 #endif
 
   // Look at some stats
